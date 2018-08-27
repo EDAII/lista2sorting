@@ -1,4 +1,6 @@
 
-int* insertionSort(int* vector);
+
 int* bubbleSort(int* vector);
-int* selectionSort(int* vector, int size);
+void selectionSort(int* vector, int size);
+void insertionSort(int* vector, int size);
+

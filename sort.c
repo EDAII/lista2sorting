@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "vector.h"
 
 void swap(int* firstValue, int* secondValue) {
     int aux = *firstValue;
@@ -7,7 +8,7 @@ void swap(int* firstValue, int* secondValue) {
     *secondValue = aux;
 }
 
-int* insertionSort(int* vector) {
+int* insertionSort(int* vector, int size) {
 
 
 
@@ -17,7 +18,7 @@ int* bubbleSort(int* vector) {
 
 }
 
-int* selectionSort(int* vector, size) {
+void selectionSort(int* vector, int size) {
     int minIndex = -1;
 
     for (int i = 0; i < size - 1; i++) {
@@ -28,5 +29,7 @@ int* selectionSort(int* vector, size) {
  
         swap(&vector[minIndex], &vector[minIndex]);
     }
+
+    printVector(vector, size);
 }
 

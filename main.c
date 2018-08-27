@@ -8,8 +8,8 @@ int main(void) {
 
   int* vector = createVector(5, 10);
   printVector(vector, 5);
-  int* newVector = selectionSort(vector, 5);
-  printVector(newVector, 5);
+  selectionSort(vector, 5);
+
 
   return 0;
 }
