@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "helper.h"
 
 int* createVector(int size, int range) {
