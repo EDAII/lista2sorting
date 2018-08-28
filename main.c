@@ -6,15 +6,25 @@
 #include "sort.h"
 
 int main(void) {
+  int size;
+  int *vector;
+
+  printf("Digite o tamanho do vetor: ");
+  do{
+    scanf("%d", &size);
+    if (size <= 0)
+      printf("Digite um valor válido.\n");
+  }while(size <= 0);
   
-  int* vector = createVector(5, 10);
-  printVector(vector, 5);
-  clock_t begin = clock();
-    selectionSort(vector, 5);
-  clock_t end = clock();
+  vector = createVector(size, 100);
 
-  double time_spent = (double)(end - begin); 
-  printf("Numbers of clock ticks used in CPU: %f\n", time_spent);
+  printf("Vetor original: ");
+  printVector(vector, size);
 
+  selectionSort(vector, size);
+  insertionSort(vector, size);
+  bubbleSort(vector, size);
+
+  destroyVector(vector);
   return 0;
 }

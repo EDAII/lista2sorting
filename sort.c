@@ -10,38 +10,81 @@ void swap(int* firstValue, int* secondValue) {
 }
 
 void bubbleSort(int* vector, int size) {
+  int temp[size];
+  int i, j;
+  clock_t begin, end;
+  double time_spent;
+
+
+  for(i = 0; i < size; i++){
+    temp[i] = vector[i];
+  }
+
+  begin = clock();
+  for(i = 0; i < size; i++){
+    for(j = 0; j < size-i; j++){
+      if(temp[j] > temp[j+1])
+        swap(&temp[j], &temp[j+1]);
+    }
+  }
+  end = clock();
+  time_spent = (double)(end - begin); 
+  printf("Tempo de ordenação do bubble sort: %fs\n", time_spent / CLOCKS_PER_SEC);
 }
 
 
 /* Insertion Sort */
 void insertionSort(int* vector, int size) {
-  for (int i = 1; i < size; i++) {
-    int aux = vector[i];
-    int j = i - 1; /* antecessor */
+  int temp[size];
+  int i, j, aux;
+  clock_t begin, end;
+  double time_spent;
+
+  for(i = 0; i < size; i++){
+    temp[i] = vector[i];
+  }
+
+  begin = clock();
+  for (i = 1; i < size; i++) {
+    aux = temp[i];
+    j = i - 1; /* antecessor */
  
     /* Swaping values with sucessor */
-    while (j >= 0 && vector[j] > aux) {
-      vector[j + 1] = vector[j];
+    while (j >= 0 && temp[j] > aux) {
+      temp[j + 1] = temp[j];
       j = j - 1;
     }
 
-    vector[j + 1] = aux;
+    temp[j + 1] = aux;
   }
-
-  printVector(vector, size);
+  end = clock();
+  time_spent = (double)(end - begin); 
+  printf("Tempo de ordenação do insertion sort: %fs\n", time_spent / CLOCKS_PER_SEC);
 }
 
 /* Selection Sort */
 void selectionSort(int* vector, int size) {
-  for (int i = 0; i < size - 1; i++) {
-    int minIndex = i;
-    for (int j = i + 1; j < size; j++)
-      if (vector[j] < vector[minIndex])
-        minIndex = j;
- 
-    swap(&vector[minIndex], &vector[i]);
+  int temp[size];
+  int i, j;
+  clock_t begin, end;
+  double time_spent;
+
+
+  for(i = 0; i < size; i++){
+    temp[i] = vector[i];
   }
 
-  printVector(vector, size);
+  begin = clock();
+  for (i = 0; i < size - 1; i++) {
+    int minIndex = i;
+    for (j = i + 1; j < size; j++)
+      if (temp[j] < temp[minIndex])
+        minIndex = j;
+ 
+    swap(&temp[minIndex], &temp[i]);
+  }
+  end = clock();
+  time_spent = (double)(end - begin); 
+  printf("Tempo de ordenação do selection sort: %fs\n", time_spent / CLOCKS_PER_SEC);
 }
 
