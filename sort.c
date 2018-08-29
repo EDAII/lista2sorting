@@ -9,6 +9,8 @@ void swap(int* firstValue, int* secondValue) {
   *secondValue = aux;
 }
 
+
+/* Bubble sort */
 void bubbleSort(int* vector, int size) {
   int temp[size];
   int i, j;
@@ -86,5 +88,42 @@ void selectionSort(int* vector, int size) {
   end = clock();
   time_spent = (double)(end - begin); 
   printf("Tempo de ordenação do selection sort: %fs\n", time_spent / CLOCKS_PER_SEC);
+}
+
+
+/* Shell sort */
+void shellSort(int *vector, int size){
+  int temp[size];
+  int i, j, h;
+  int aux;
+  clock_t begin, end;
+  double time_spent;
+
+  for(i = 0; i < size; i++){
+    temp[i] = vector[i];
+  }
+
+  begin = clock();
+
+  for(h = 1; h < size; h = 3*h + 1);
+
+  while(h > 0){
+    h = (h-1)/3;
+    for(i = h; i < size; i++){
+      aux = temp[i];
+      j = i;
+      while(temp[j - h] > aux){
+        temp[j] = temp[j - h];
+        j-= h;
+        if(j < h){
+          break;
+        }
+      }
+      temp[j] = aux;
+    }
+  }
+  end = clock();
+  time_spent = (double)(end - begin); 
+  printf("Tempo de ordenação do shell sort: %fs\n", time_spent / CLOCKS_PER_SEC);
 }
 

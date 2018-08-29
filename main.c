@@ -24,6 +24,7 @@ int main(void) {
   selectionSort(vector, size);
   insertionSort(vector, size);
   bubbleSort(vector, size);
+  shellSort(vector, size);
 
   destroyVector(vector);
   return 0;
